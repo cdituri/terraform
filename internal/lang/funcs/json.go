@@ -61,7 +61,11 @@ var JSONSchemaFunc = function.New(&function.Spec{
 
 		result := schema.Validate(instance)
 
-		return cty.BoolVal(result.IsValid()), nil
+		if result.IsValid() {
+			return cty.True, nil
+		} else {
+			return cty.False, nil
+		}
 	},
 })
 

@@ -14,9 +14,9 @@ build:
     - echo "Building the application..."
     - mkdir my-project
     - cp ./src/* my-project/
-  artifacts:
-    paths:
-      - my-project/
+artifacts:
+  paths:
+    - my-project/
 
 test:
   stage: test
