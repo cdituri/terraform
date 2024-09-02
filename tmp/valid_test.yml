@@ -1,0 +1,33 @@
+# yaml-server: https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json
+
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  GIT_CLEAN_FLAGS: none
+
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - mkdir my-project
+    - cp ./src/* my-project/
+  artifacts:
+    paths:
+      - my-project/
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - ./my-project/run-tests.sh
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to production..."
+    - ./my-project/deploy.sh
+  only:
+    - main
