@@ -50,7 +50,7 @@ var JSONSchemaFunc = function.New(&function.Spec{
 			)
 		}
 
-		var instance map[string]interface{}
+		var instance interface{}
 		if err = json.Unmarshal([]byte(instanceJSON), &instance); err != nil {
 			return cty.UnknownVal(cty.String), function.NewArgErrorf(
 				1,
