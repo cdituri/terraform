@@ -49,7 +49,7 @@ var templateFunctions = collections.NewSetCmp[string](
 	"templatestring",
 )
 
-// Functions returns the set of functions that should be used to when evaluating
+// Functions returns the set of functions that should be used when evaluating
 // expressions in the receiving scope.
 func (s *Scope) Functions() map[string]function.Function {
 	s.funcsLock.Lock()
@@ -111,6 +111,7 @@ func (s *Scope) Functions() map[string]function.Function {
 			"join":             stdlib.JoinFunc,
 			"jsondecode":       stdlib.JSONDecodeFunc,
 			"jsonencode":       stdlib.JSONEncodeFunc,
+			"jsonschema":       funcs.JSONSchemaFunc,
 			"keys":             stdlib.KeysFunc,
 			"length":           funcs.LengthFunc,
 			"list":             funcs.ListFunc,
@@ -321,6 +322,7 @@ func baseFunctions(baseDir string) map[string]function.Function {
 		"join":             stdlib.JoinFunc,
 		"jsondecode":       stdlib.JSONDecodeFunc,
 		"jsonencode":       stdlib.JSONEncodeFunc,
+		"jsonschema":       funcs.JSONSchemaFunc,
 		"keys":             stdlib.KeysFunc,
 		"length":           funcs.LengthFunc,
 		"list":             funcs.ListFunc,
